@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="initial-scale=1,user-scalable=no,maximum-scale=1,width=device-width">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/chart.js"></link>
+    <title>Diagram Batang</title>
+</head>
+
+<body>
+    <center>
+        <h1>Diagram Perubahan Penggunaan Lahan</h1>
+    </center>
+    <div style="width: 80%; margin: auto;">
+        <canvas id="perubahanLahanChart"></canvas>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Data perubahan penggunaan lahan
+        var dataPerubahanLahan = [
+            { jenis: 'Tambak', pl2019: 3, pl2023: 0 },
+            { jenis: 'Pemukiman', pl2019: 10, pl2023: 11 },
+            { jenis: 'Ladang', pl2019: 7, pl2023: 8 },
+            { jenis: 'Sawah', pl2019: 8, pl2023: 9 },
+            { jenis: 'Lahan Terbuka', pl2019: 0, pl2023: 2 },
+            { jenis: 'Waduk', pl2019: 2, pl2023: 1 },
+            { jenis: 'Perkebunan', pl2019: 0, pl2023: 9 },
+            // ... tambahkan data lainnya sesuai kebutuhan ...
+        ];
+
+        // Inisialisasi chart
+        var ctx = document.getElementById('perubahanLahanChart').getContext('2d');
+        var perubahanLahanChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+                labels: dataPerubahanLahan.map(item => item.jenis),
+                datasets: [{
+                    label: 'PL 2019',
+                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                    borderColor: 'rgba(75, 192, 192, 1)',
+                    borderWidth: 1,
+                    data: dataPerubahanLahan.map(item => item.pl2019)
+                }, {
+                    label: 'PL 2023',
+                    backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                    borderColor: 'rgba(255, 99, 132, 1)',
+                    borderWidth: 1,
+                    data: dataPerubahanLahan.map(item => item.pl2023)
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    <cennter>
+        <h2>Diagram Lingkaran</h2>
+        <h3>Di bawah ini merupakan diagram lingkaran yang menunjukkan presentase luas (Ha) penggunaan lahan pada titik survei yang telah kami lakukan di Kecamatan Balongpanggang, Benjeng, dan Kedamean tahun 2023. Pada diagram ini dapat diketahui bahwa perubahan lahan menjadi ladang merupakan yang paling dominan.</h3>
+     <img src="C:\Users\USER\Downloads\SIG\gambar%20presentasi.png" alt="Foto Developer" style="max-width: 500px; height: auto;">
+    </cennter>
+</body>
+
+</html>
